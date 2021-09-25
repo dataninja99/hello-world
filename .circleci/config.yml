@@ -39,6 +39,8 @@ jobs: # A basic unit of work in a run
       - run:
           command: |
             TEST_FILES=$(circleci tests runner.py | circleci tests split --split-by=timings)
+            echo "*******"
+            echo  $TEST_FILES
             pytest --verbose --junitxml=test-results/junit.xml $TEST_FILES
       - store_test_results: # Upload test results for display in Test Summary: https://circleci.com/docs/2.0/collect-test-data/
           path: test-results
