@@ -44,7 +44,7 @@ jobs: # A basic unit of work in a run
             echo  "$TEST_FILES"
             echo "*******"
             circleci tests split --split-by=timings
-            pytest test1.py --verbose --junitxml= ~/circleci-demo-python-django/test-results/junit.xml 
+            pytest test1.py --verbose --junitxml= junit.xml 
       - store_test_results: # Upload test results for display in Test Summary: https://circleci.com/docs/2.0/collect-test-data/
           path: test-results
       - store_artifacts: # Upload test summary for display in Artifacts: https://circleci.com/docs/2.0/artifacts/
