@@ -39,7 +39,7 @@ jobs: # A basic unit of work in a run
       - run:
           command: |
             TEST_FILES=$(circleci tests split --split-by=timings)
-            pytest test1.py, test2.py, test3.py, test4.py --verbose --junitxml=/home/circleci/circleci-demo-python-django/test-results/junit.xml $TEST_FILES
+            pytest test1.py  --verbose --junitxml=/home/circleci/circleci-demo-python-django/test-results/junit.xml $TEST_FILES
       - store_test_results: # Upload test results for display in Test Summary: https://circleci.com/docs/2.0/collect-test-data/
           path: /home/circleci/circleci-demo-python-django/test-results/
       - store_artifacts: # Upload test summary for display in Artifacts: https://circleci.com/docs/2.0/artifacts/
