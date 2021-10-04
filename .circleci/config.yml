@@ -2,7 +2,6 @@ version: 2 # use CircleCI 2.0
 jobs: # A basic unit of work in a run
   build: # runs not using Workflows must have a `build` job as entry point
     # directory where steps are run
-    working_directory: ~/circleci-demo-python-django
     docker: # run the steps with Docker
       # CircleCI Python images available at: https://hub.docker.com/r/circleci/python/
       - image: circleci/python:3.6.4
@@ -39,9 +38,9 @@ jobs: # A basic unit of work in a run
       - run:
           command: |
             TEST_FILES=$(circleci tests glob  "test*.py" | circleci tests split --split-by=timings)
-            pytest test1.py test2.py test3.py test4.py  --verbose --junitxml=/home/circleci/circleci-demo-python-django/test-results/junit.xml $TEST_FILES
+            pytest test1.py test2.py test3.py test4.py  --verbose --junitxml=test-results/junit.xml $TEST_FILES
       - store_test_results: # Upload test results for display in Test Summary: https://circleci.com/docs/2.0/collect-test-data/
-          path: /home/circleci/circleci-demo-python-django/test-results/
+          path: test-results/
       - store_artifacts: # Upload test summary for display in Artifacts: https://circleci.com/docs/2.0/artifacts/
           path: test-results
           destination: tr1
