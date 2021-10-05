@@ -38,12 +38,8 @@ jobs: # A basic unit of work in a run
             - "venv"
       - run:
           command: |
-            TEST_FILES=$(circleci tests glob  "test*.py" | circleci tests split --split-by=timings)
-            echo "**********"
-            echo $TEST_FILES
-            echo "**********"
-            mkdir -p test-results
-            pytest test1.py --verbose --junitxml=test-results/junit.xml 
+            TESTFILES=$(circleci tests split --split-by=timings list_of_test_files.txt)
+            pytest test1.py --verbose --junitxml=test-results/junit.xml $TESTFILES
       - store_test_results: # Upload test results for display in Test Summary: https://circleci.com/docs/2.0/collect-test-data/
           path: test-results
       - store_artifacts: # Upload test summary for display in Artifacts: https://circleci.com/docs/2.0/artifacts/
