@@ -38,7 +38,7 @@ jobs: # A basic unit of work in a run
             - "venv"
       - run:
           command: |
-            TEST_FILES=$(circleci tests glob  "test*.py" | circleci tests split --split-by=timings)
+            TEST_FILES=$(test1.py  | circleci tests split --split-by=timings)
             echo "**********"
             echo $TEST_FILES
             echo "**********"
